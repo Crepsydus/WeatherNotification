@@ -44,21 +44,21 @@ for r, s, sh in zip(hourly_rain, hourly_snowfall, hourly_showers):
 if len(s_h) > 0:
     notification.notify(
         title="Погодный скрипт",
-        message=f"❄️ Кажется сегодня будет СНЕГ! 🌨️ \n{s_h}",
+        message=f"❄️❄️❄️ Кажется сегодня будет СНЕГ! 🌨️ \n{s_h}",
         app_name="Python Weather",
-        timeout=10
+        timeout=20
     )
 elif len(r_h) > 0:
     notification.notify(
         title="Погодный скрипт",
-        message=f"🌧️ Кажется сегодня будет ДОЖДЬ! ☂️ \n{r_h}",
+        message=f"💧💧💧 Кажется сегодня будет ДОЖДЬ! 🌧️\n{r_h}",
         app_name="Python Weather",
-        timeout=15
+        timeout=20
     )
 else:
     notification.notify(
         title="Погодный скрипт",
         message="Скрипт ничего не обнаружил!",
         app_name="Python Weather",
-        timeout=5
+        timeout=15
     )
