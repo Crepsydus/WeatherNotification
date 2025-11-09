@@ -1,5 +1,5 @@
 import openmeteo_requests
-
+import time
 from plyer import notification
 import requests_cache
 from retry_requests import retry
@@ -36,9 +36,12 @@ s_h = []
 i = 0
 for r, s, sh in zip(hourly_rain, hourly_snowfall, hourly_showers):
     if r >= 0.1 or sh >= 0.1:
-        r_h.append(i)
+        # if time.localtime():
+        if time.localtime()[3] <= i + 2:
+            r_h.append(i)
     if s >= 0.1:
-        s_h.append(i)
+        if time.localtime()[3] <= i + 2:
+            s_h.append(i)
     i+=1
 
 if len(s_h) > 0:
