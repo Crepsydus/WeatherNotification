@@ -59,9 +59,10 @@ elif len(r_h) > 0:
         timeout=20
     )
 else:
-    notification.notify(
-        title="Погодный скрипт",
-        message="Скрипт ничего не обнаружил!",
-        app_name="Python Weather",
-        timeout=15
-    )
+    # notification.notify(
+    #     title="Погодный скрипт",
+    #     message="Скрипт ничего не обнаружил!",
+    #     app_name="Python Weather",
+    #     timeout=15
+    # )
+    pass
