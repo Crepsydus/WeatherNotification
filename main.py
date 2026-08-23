@@ -3,6 +3,7 @@ import time
 from plyer import notification
 import requests_cache
 from retry_requests import retry
+import datetime
 
 cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
 retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
@@ -35,15 +36,15 @@ s_h = []
 
 i = 0
 for r, s, sh in zip(hourly_rain, hourly_snowfall, hourly_showers):
-    if r >= 0.1 or sh >= 0.1:
-        # if time.localtime():
-        if time.localtime()[3] <= i + 2:
+    if r >= 0.2 or sh >= 0.2:
+        if time.localtime()[3] <= i + 1:
             r_h.append(i)
-    if s >= 0.1:
-        if time.localtime()[3] <= i + 2:
+    if s >= 0.2:
+        if time.localtime()[3] <= i + 1:
             s_h.append(i)
     i+=1
 
+time.sleep(2)
 if len(s_h) > 0:
     notification.notify(
         title="Погодный скрипт",
@@ -51,6 +52,7 @@ if len(s_h) > 0:
         app_name="Python Weather",
         timeout=20
     )
+    time.sleep(5)
 elif len(r_h) > 0:
     notification.notify(
         title="Погодный скрипт",
@@ -58,6 +60,7 @@ elif len(r_h) > 0:
         app_name="Python Weather",
         timeout=20
     )
+    time.sleep(5)
 else:
     # notification.notify(
     #     title="Погодный скрипт",
